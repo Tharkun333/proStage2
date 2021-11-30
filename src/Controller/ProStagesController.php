@@ -14,7 +14,37 @@ class ProStagesController extends AbstractController
     public function index(): Response
     {
         return $this->render('pro_stages/index.html.twig', [
-           // 'controller_name' => 'ProStagesController',
+           
+        ]);
+    }
+
+        /**
+     * @Route("/entreprises", name="entreprise")
+     */
+    public function afficherEntreprise(): Response
+    {
+        return $this->render('pro_stages/entreprise.html.twig', [''
+           
+        ]);
+    }
+
+        /**
+     * @Route("/formations", name="formations")
+     */
+    public function afficherFormations(): Response
+    {
+        return $this->render('pro_stages/formations.html.twig', [
+           
+        ]);
+    }
+
+        /**
+     * @Route("/stages/{id}", name="stages")
+     */
+    public function afficherStages($id): Response
+    {
+        return $this->render('pro_stages/stages.html.twig', [
+           'id'=>$id,
         ]);
     }
 }
