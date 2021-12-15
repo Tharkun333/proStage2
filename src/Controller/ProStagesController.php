@@ -23,7 +23,7 @@ class ProStagesController extends AbstractController
      */
     public function afficherEntreprise(): Response
     {
-        return $this->render('pro_stages/entreprise.html.twig', [''
+        return $this->render('pro_stages/entreprises.html.twig', [''
            
         ]);
     }
