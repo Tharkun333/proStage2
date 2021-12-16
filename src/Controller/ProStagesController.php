@@ -44,7 +44,7 @@ class ProStagesController extends AbstractController
     public function afficherStages($id): Response
     {
         return $this->render('pro_stages/stages.html.twig', [
-           'id'=>$id,
+           'idStage'=>$id,
         ]);
     }
 }
