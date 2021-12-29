@@ -2,30 +2,31 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}ProStages{% endblock %}</title>
         {# Run `composer require symfony/webpack-encore-bundle`
            and uncomment the following Encore helpers to start using Symfony UX #}
-        {% block stylesheets %}
-            {#{{ encore_entry_link_tags('app') }}#}
-        {% endblock %}
+        {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {#{{ encore_entry_script_tags('app') }}#}
-        {% endblock %}
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
-        <h1>Bienvenue sur ProStages</h1>
+        
+        {% block Menu %}
+            <h1>Bienvenue sur ProStages</h1>
             <p>
             Les liens mon con ♥
             </p>
             <ul>
             eyzghrjkglregbreuflinrgbnirehglbnmùgrbjsemrlk
-                <li id=bob>      
+                <li id="bob">      
                     <a href="{{path('stages',{id:5})}}"> stage1</a> {# et class#} 
                     <a href="{{path('entreprise')}}"> entreprise</a> 
-                    <a href="{{path('formations')}}"> entreprise</a> 
+                    <a href="{{path('formations')}}"> formations</a> 
                 </li>
             </ul>
-        {% block body %}{% endblock %}
+        {% endblock %}    
+        
+        {% block Contenu %}{% endblock %}
+        {% block PiedPage %}{% endblock %}
     </body>
 </html>
