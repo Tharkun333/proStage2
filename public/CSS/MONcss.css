@@ -1,0 +1,27 @@
+
+
+[class*=container-fluid]
+{
+    background-color: rgb(240, 232, 215) ;
+    padding-top: 10px;
+    text-align: center;
+    line-height: 35px;
+    color: aliceblue;
+  
+}
+
+[class*="row-fluid"]{
+    margin-top: 10px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+  
+}
+
+
+[class*="flex-sm-fill text-sm-center nav-link"]{
+    color: black;
+    width: 33%;
+    border: 2px solid #000000;
+    border-radius: 10px;
+  
+}
