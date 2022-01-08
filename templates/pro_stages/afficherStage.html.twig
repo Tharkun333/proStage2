@@ -12,33 +12,30 @@
                         Titre :
                     </dt>
                     <dd>
-                        Titre du stage {{idStage}} exemple "Developpeur JAVA"
+                        {{stage.titre}}
                     </dd>
                     <dt>
-                        Nom :
+                        Nom de l'entreprise:
                     </dt>
                     <dd>
-                        Nom du stage {{idStage}} exemple "BOB"
+                        {{stage.codeEntreprise.nom}}
                     </dd>
                     <dd>
-                        Plus d'info
+                        
                     </dd>
                     <dt>
                         Activité :
                     </dt>
                     <dd>
-                        Activité du stage {{idStage}} exemple "Developpeur d'application"
+                        {{stage.codeEntreprise.activite}}
                     </dd>
-                        <div class="container-fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                    
-                                <address>
-                                    <strong>Twitter, Inc.</strong><br /> 795 Folsom Ave, Suite 600<br /> San Francisco, CA 94107<br /> <abbr title="Phone">P:</abbr> (123) 456-7890
-                                </address>
-                                </div>
-                            </div>
-                        </div>
+                    <dt>
+                        Adresse :
+                    </dt>
+                    <dd>
+                        {{stage.codeEntreprise.adresse}}
+                    </dd>
+                       
                     </dl>
 				</div>
 				<div class="col-md-6">
@@ -47,7 +44,7 @@
                             Description :
                         </dt>
                         <dd>
-                           Description du stage {{idStage}} exemple "Le but est de..."
+                           {{stage.missions}}
                         </dd>
                     </dl>
 				</div>
@@ -57,3 +54,4 @@
 </div>
 
 {% endblock %}
+
