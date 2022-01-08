@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -64,6 +65,40 @@ class ProStagesController extends AbstractController
         return $this->render('pro_stages/afficherStage.html.twig', [
 
            'stage'=>$leStage,
+        ]);
+    }
+
+            /**
+     * @Route("/formationStages/{id}", name="formationStages")
+     */
+    public function formationStages($id): Response
+    {   
+        //recuperer le repository de l'entitée Stage
+        $repositoryStage=$this->getDoctrine()->getRepository(Formation::class);
+        //recuperer les ressources de l'entité Ressource
+        $laFormation = $repositoryStage->find($id);
+    
+        return $this->render('pro_stages/formationStages.html.twig', [
+
+           'formation'=>$laFormation,
+        ]);
+    }
+
+            /**
+     * @Route("/entrepriseStages/{id}", name="entrepriseStages")
+     */
+    public function entrepriseStages($id): Response
+    {   
+        //recuperer le repository de l'entitée Stage
+        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
+        //recuperer les ressources de l'entité Ressource
+        
+        $StageDeLentreprise = $repositoryStage->findBy(['codeEntreprise'=>$id]); 
+        // renvoie tous les stage qui ont pour codeEntreprise l'id donner
+    
+        return $this->render('pro_stages/entrepriseStages.html.twig', [
+
+           'stages'=>$StageDeLentreprise,
         ]);
     }
 }
