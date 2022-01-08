@@ -1,5 +1,27 @@
 {% extends 'base.html.twig' %}
 
 {% block Contenu %}
-<h3>bob</h3>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+        <th scope="col">Formations</th>
+        <th scope="col">Abréviation</th>
+        <th scope="col">Nom Complet</th>
+        <th scope="col">Plus d'informations</th>
+        </tr>
+    </thead>
+    {% for formation in formations %}
+        <tbody>
+            <tr>
+                <th scope="row">{{formation.id}}</th>
+                <td>{{formation.nomCourt}}</td>
+                <td>{{formation.nom}}</td>
+                <td><a class="stage" href="{{path('afficherStage',{id:formation.id})}}">Voir</a></td>
+            </tr>
+        </tbody>
+    {% endfor %}
+
+</table>
+
+<!--gpeyrelongue_sym pour se connecter a la base de donnée-->
 {% endblock %}

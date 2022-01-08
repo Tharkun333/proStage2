@@ -1,7 +1,6 @@
 {% extends 'base.html.twig' %}  {# heritage #} 
 
 {% block Contenu %}
-
 <table class="table table-striped table-hover">
     <thead>
         <tr>
@@ -15,11 +14,14 @@
     {% for stage in stages %}
         <tbody>
             <tr>
-            <th scope="row">{{stage.id}}</th>
-            <td>{{stage.titre}}</td>
-            <td>{{stage.codeEntreprise.nom}}</td>
-            <td>bob</td>
-            <td><a class="stage" href="{{path('afficherStage',{id:stage.id})}}">Voir</a></td>
+                <th scope="row">{{stage.id}}</th>
+                <td>{{stage.titre}}</td>
+                <td>{{stage.codeEntreprise.nom}}</td>
+                <td>{% for formation in stage.codeFormation %}
+                {{formation.nomCourt}}
+                {% endfor %}            
+                </td>
+                <td><a class="stage" href="{{path('afficherStage',{id:stage.id})}}">Voir</a></td>
             </tr>
         </tbody>
     {% endfor %}
