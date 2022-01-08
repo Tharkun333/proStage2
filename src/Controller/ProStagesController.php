@@ -74,13 +74,13 @@ class ProStagesController extends AbstractController
     public function formationStages($id): Response
     {   
         //recuperer le repository de l'entitée Stage
-        $repositoryStage=$this->getDoctrine()->getRepository(Formation::class);
-        //recuperer les ressources de l'entité Ressource
-        $laFormation = $repositoryStage->find($id);
+        $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
+        //recuperer les ressources de l'entité 
+        $laFormation = $repositoryStage->findBy(['codeFormation'=>$id]);
     
         return $this->render('pro_stages/formationStages.html.twig', [
 
-           'formation'=>$laFormation,
+           'stages'=>$laFormation,
         ]);
     }
 
@@ -91,7 +91,7 @@ class ProStagesController extends AbstractController
     {   
         //recuperer le repository de l'entitée Stage
         $repositoryStage=$this->getDoctrine()->getRepository(Stage::class);
-        //recuperer les ressources de l'entité Ressource
+        //recuperer les ressources de l'entité 
         
         $StageDeLentreprise = $repositoryStage->findBy(['codeEntreprise'=>$id]); 
         // renvoie tous les stage qui ont pour codeEntreprise l'id donner
