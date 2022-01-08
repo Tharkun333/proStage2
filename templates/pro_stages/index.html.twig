@@ -1,34 +1,29 @@
 {% extends 'base.html.twig' %}  {# heritage #} 
 
 {% block Contenu %}
+
 <table class="table table-striped table-hover">
     <thead>
         <tr>
-        <th scope="col">#</th>
-        <th scope="col">First</th>
-        <th scope="col">Last</th>
-        <th scope="col">Handle</th>
+        <th scope="col">Stage</th>
+        <th scope="col">Titre</th>
+        <th scope="col">Entreprise</th>
+        <th scope="col">Formations Acceptées</th>
+        <th scope="col">Plus d'informations</th>
         </tr>
     </thead>
-    <tbody>
-        <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td><a class="stage" href="{{path('afficherStage',{id:1})}}">Voir</a></td>
-        </tr>
-        <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td><a class="stage" href="{{path('afficherStage',{id:2})}}">Voir</a></td>
-        </tr>
-        <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td><a class="stage" href="{{path('afficherStage',{id:3})}}">Voir</a></td>
-        </tr>
-    </tbody>
+    {% for stage in stages %}
+        <tbody>
+            <tr>
+            <th scope="row">{{stage.id}}</th>
+            <td>{{stage.titre}}</td>
+            <td>{{stage.codeEntreprise.nom}}</td>
+            <td>bob</td>
+            <td><a class="stage" href="{{path('afficherStage',{id:stage.id})}}">Voir</a></td>
+            </tr>
+        </tbody>
+    {% endfor %}
+
 </table>
 
 <!--gpeyrelongue_sym pour se connecter a la base de donnée-->

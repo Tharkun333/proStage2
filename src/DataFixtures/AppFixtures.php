@@ -14,8 +14,7 @@ class AppFixtures extends Fixture
     {
         //création d'un generateur de données faker
         $faker = \Faker\Factory::create('fr_FR');
-
-
+  
 
 
         // Création des entreprises///////////////////
@@ -69,7 +68,7 @@ class AppFixtures extends Fixture
                 $nbAleatoire=$faker->numberBetween($min = 1 , $max = 5);  // nombre de stage alétoire
                 for ($i = 0; $i<$nbAleatoire; $i++){
                     $stage = new Stage();
-                    $stage->setTitre("BOB" );
+                    $stage->setTitre($faker->word );
                     $stage->setMissions($faker->realText($maxNbChars =200, $indexSize = 2));
                     $nom=$uneEntreprise->getNom();
                     $stage->setContact("$nom@gmail.com");
