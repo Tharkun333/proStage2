@@ -43,9 +43,18 @@
                         <dt>
                             Description :
                         </dt>
-                        <dd>
+                        <dd></br>
                            {{stage.missions}}
                         </dd>
+                        <br></br>
+                        
+                        <dt>
+                            Formations acceptées :
+                        </dt>
+                        <td>/{% for formation in stage.codeFormation %}
+                            {{formation.nomCourt}}/
+                            {% endfor %}            
+                         </td>
                     </dl>
 				</div>
 			</div>

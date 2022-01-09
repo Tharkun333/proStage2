@@ -17,8 +17,8 @@
                 <th scope="row">{{stage.id}}</th>
                 <td>{{stage.titre}}</td>
                 <td>{{stage.codeEntreprise.nom}}</td>
-                <td>{% for formation in stage.codeFormation %}
-                {{formation.nomCourt}}
+                <td>/{% for formation in stage.codeFormation %}
+                {{formation.nomCourt}}/
                 {% endfor %}            
                 </td>
                 <td><a class="stage" href="{{path('afficherStage',{id:stage.id})}}">Voir</a></td>
