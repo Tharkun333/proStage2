@@ -75,11 +75,31 @@ class AppFixtures extends Fixture
 
                     //nombre aléatoire 
                     $nbAleaFormation=$faker->numberBetween($min = 0 , $max = $nbformation-1);
-                     
+                    $nbAleaFormation2=$faker->numberBetween($min = 0 , $max = $nbformation-1);
+                    $nbAleaFormation3=$faker->numberBetween($min = 0 , $max = $nbformation-1);
+                    $nbAleaFormation4=$faker->numberBetween($min = 0 , $max = $nbformation-1);  
                     //LES LIAISONS//
 
-                    //ajout d'une formation dans le stage
+                    //ajout de formation(s) dans le stage et inversement
                     $stage->addCodeFormation($tabFormations[$nbAleaFormation]); //add car le stage peut etre lier a plusieurs entreprises 
+                    if($nbAleaFormation!=$nbAleaFormation2){
+                        $stage->addCodeFormation($tabFormations[$nbAleaFormation2]);
+                        $tabFormations[$nbAleaFormation2]->addStage($stage);
+                    }
+                    if($nbAleaFormation!=$nbAleaFormation3 && $nbAleaFormation2!=$nbAleaFormation3){
+                        $stage->addCodeFormation($tabFormations[$nbAleaFormation3]);
+                        $tabFormations[$nbAleaFormation3]->addStage($stage);
+                    }
+                    if($nbAleaFormation!=$nbAleaFormation4 && $nbAleaFormation2!=$nbAleaFormation4 && $nbAleaFormation3!=$nbAleaFormation4){
+                        $stage->addCodeFormation($tabFormations[$nbAleaFormation4]);
+                        $tabFormations[$nbAleaFormation4]->addStage($stage);
+                    }
+                    
+                    
+
+
+
+                    /////////////////////:::::
                     $tabFormations[$nbAleaFormation]->addStage($stage);
                     //ajout d'une entreprise pour le stage
                     $stage->setCodeEntreprise($uneEntreprise);//set car le stage ne peut avoir qu'une entreprise
