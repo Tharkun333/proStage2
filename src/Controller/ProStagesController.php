@@ -30,7 +30,7 @@ class ProStagesController extends AbstractController
      */
     public function afficherEntreprise(): Response
     {
-        //recuperer le repository de l'entitée Stage
+        //recuperer le repository de l'entitée Entreprise
         $repositoryEntreprise=$this->getDoctrine()->getRepository(Entreprise::class);
         //recuperer les ressources de l'entité Ressource
         $ressources = $repositoryEntreprise->findAll();
