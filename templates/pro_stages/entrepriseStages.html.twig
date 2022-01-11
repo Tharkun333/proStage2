@@ -17,7 +17,7 @@
                 <th scope="row">{{stage.id}}</th>
                 <td>{{stage.titre}}</td>
                 <td>{{stage.codeEntreprise.nom}}</td>
-                <td/{% for formation in stage.codeFormation %}
+                <td>/{% for formation in stage.codeFormation %}
                 {{formation.nomCourt}}/
                 {% endfor %}            
                 </td>
