@@ -73,7 +73,7 @@ class AppFixtures extends Fixture
                     $nom=$uneEntreprise->getNom();
                     $stage->setContact("$nom@gmail.com");
 
-                    //nombre aléatoire 
+                    //nombres aléatoires 
                     $nbAleaFormation=$faker->numberBetween($min = 0 , $max = $nbformation-1);
                     $nbAleaFormation2=$faker->numberBetween($min = 0 , $max = $nbformation-1);
                     $nbAleaFormation3=$faker->numberBetween($min = 0 , $max = $nbformation-1);
