@@ -16,7 +16,7 @@
                 <th scope="row">{{formation.id}}</th>
                 <td>{{formation.nomCourt}}</td>
                 <td>{{formation.nom}}</td>
-                <td><a class="stage" href="{{path('formationStages',{id:formation.id})}}">Voir</a></td>
+                <td><a class="stage" href="{{path('formationStages',{nom:formation.nom})}}">Voir</a></td>
             </tr>
         </tbody>
     {% endfor %}

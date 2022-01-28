@@ -68,9 +68,9 @@ class ProStagesController extends AbstractController
     }
 
             /**
-     * @Route("/formationStages/{id}", name="formationStages")
+     * @Route("/formationStages/{nom}", name="formationStages")
      */
-    public function formationStages(Formation $laFormation): Response
+    public function formationStages(StageRepository $repositoryStage, $nom): Response
     {   
         /*
         exemple que je garde
@@ -79,10 +79,12 @@ class ProStagesController extends AbstractController
         //recuperer les formations de l'entité 
         $laFormation = $repositoryFormation->find($id);// renvoie la formation
         */
-    
+        
+        $StageDeLaFormation = $repositoryStage->trouverToutLesStagesParFormation($nom);
         return $this->render('pro_stages/formationStages.html.twig', [
+            'nomFormation'=>$nom,
+           'stages'=>$StageDeLaFormation,
 
-           'formation'=>$laFormation,
         ]);
     }
 

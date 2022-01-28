@@ -2,7 +2,7 @@
 
 {% block Contenu %}
 <div class="container-fluid-premier">
-Stages triés par la formation {{formation.nom}}
+Stages triés par la formation {{nomFormation}}
 </div>
 <table class="table table-striped table-hover">
     <thead>
@@ -14,7 +14,7 @@ Stages triés par la formation {{formation.nom}}
         <th scope="col">Plus d'informations</th>
         </tr>
     </thead>
-    {% for stage in formation.stages %}
+    {% for stage in stages %}
         <tbody>
             <tr>
                 <th scope="row">{{stage.id}}</th>

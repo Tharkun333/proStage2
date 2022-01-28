@@ -50,6 +50,8 @@ class StageRepository extends ServiceEntityRepository
     public function trouverToutLesStagesParEntreprise($nom)
     {
         return $this->createQueryBuilder('s')
+            ->select('s,e') // pour récuperer les stages et leur entreprise
+            // si on le met pas ca aurai par default mi le s et on aurai donc eu les stages par entreprise 
             ->join('s.codeEntreprise', 'e')
             ->where('e.nom = :nomEntreprise')
             ->setParameter('nomEntreprise', $nom)
@@ -64,8 +66,9 @@ class StageRepository extends ServiceEntityRepository
         $requete = $gestionnaireEntite->createQuery(
         'SELECT s,f 
         From App\Entity\Stage s Join s.codeFormation f 
-        WHERE f.nom=s.codeFormation  
+        WHERE f.nom= :nomFormation
         ');
+        $requete->setParameter('nomFormation', $nom);
         return $requete->execute();
     }
 }
