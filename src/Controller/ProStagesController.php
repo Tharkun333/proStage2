@@ -87,14 +87,17 @@ class ProStagesController extends AbstractController
     }
 
             /**
-     * @Route("/entrepriseStages/{id}", name="entrepriseStages")
+     * @Route("/entrepriseStages/{nom}", name="entrepriseStages")
      */
-    public function entrepriseStages(StageRepository $repositoryStage, $id): Response
+    public function entrepriseStages(StageRepository $repositoryStage , $nom): Response
     {   
     
         //recuperer les ressources de l'entité 
+
         
-        $StageDeLentreprise = $repositoryStage->findBy(['codeEntreprise'=>$id]); 
+        
+        $StageDeLentreprise = $repositoryStage->trouverToutLesStagesParEntreprise($nom); 
+
         // renvoie tous les stage qui ont pour codeEntreprise l'id donner
     
         return $this->render('pro_stages/entrepriseStages.html.twig', [

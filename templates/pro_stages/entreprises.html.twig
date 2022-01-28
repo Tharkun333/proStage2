@@ -16,7 +16,7 @@
                 <th scope="row">{{entreprise.id}}</th>
                 <td>{{entreprise.nom}}</td>
                 <td>{{entreprise.urlSite}}</td>
-                <td><a class="stage" href="{{path('entrepriseStages',{id:entreprise.id})}}">Voir</a></td>
+                <td><a class="stage" href="{{path('entrepriseStages',{nom:entreprise.nom})}}">Voir</a></td>
             </tr>
         </tbody>
     {% endfor %}
