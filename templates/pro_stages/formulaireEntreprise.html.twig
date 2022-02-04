@@ -1,5 +1,33 @@
 {% extends 'base.html.twig' %}
 {% block Contenu %}
-Saisisser les caractéristique de l'entreprise <br></br>
-{{form(formulaire)}}
+
+
+<div class="row-fluid-formulaire">
+</br><strong>Saisisser les caractéristique de l'entreprise</strong></br>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+        <div class="col-md-8">
+            {{form_start(formulaire)}}
+
+            {{form_row(formulaire.nom)}}
+
+            {{form_row(formulaire.adresse)}}
+
+            {{form_row(formulaire.activite)}}
+
+            {{form_row(formulaire.urlSite)}}
+
+            
+
+        <div>
+    <div class="col-md-2">
+    </div>
+</div></br>
+<div class="row-fluid-formulaire">
+    {{form_row(formulaire.Enregistrer)}}
+    {{form_end(formulaire)}}
+</br></br>
+</div>
 {% endblock %}

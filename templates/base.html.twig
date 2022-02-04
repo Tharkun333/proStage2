@@ -38,13 +38,22 @@
             <!-- Haut de pages-->
             <div class="row">
                 <div class="col-md-12">
-                    <img alt="Logo" src="{{asset('/image/PRo.png')}}" height="200px" class="rounded-circle" />
+                    <div class="row">
+                        <div class="col-md-4">
+                        </div>
+                        <div class="col-md-4">
+                        <img alt="Logo" src="{{asset('/image/PRo.png')}}" height="200px" class="rounded-circle" />
+                        </div>
+                        <div class="col-md-4-droite">
+                        </div>
+                    </div>
+                    
                     <div class="row-fluid">
                         <nav class="nav nav-pills flex-column flex-sm-row nav-justified">
                         
                             <a class="flex-sm-fill text-sm-center nav-link" href="{{path('pro_stages_Accueil')}}">Accueil</a>
                             
-                            <a class="flex-sm-fill text-sm-center nav-link moi" href="{{path('entreprise')}}"> Entreprises</a>
+                            <a class="flex-sm-fill text-sm-center nav-link " href="{{path('entreprise')}}"> Entreprises</a>
                             
                             <a class="flex-sm-fill text-sm-center nav-link" href="{{path('formations')}}"> Formations</a>
                         

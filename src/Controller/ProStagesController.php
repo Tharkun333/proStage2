@@ -68,12 +68,13 @@ class ProStagesController extends AbstractController
         /**
      * @Route("/stage/{id}", name="afficherStage")
      */
-    public function afficherStage(Stage $leStage): Response
+    public function afficherStage(StageRepository $repositoryStage,$id): Response
     {   
-    
+        
+       $infoStage=$repositoryStage->trouverCaracteristiqueStage($id);
         return $this->render('pro_stages/afficherStage.html.twig', [
 
-           'stage'=>$leStage,
+           'stage'=>$infoStage
         ]);
     }
 

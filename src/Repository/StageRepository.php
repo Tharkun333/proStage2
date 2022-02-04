@@ -50,9 +50,10 @@ class StageRepository extends ServiceEntityRepository
     public function trouverToutLesStagesParEntreprise($nom)
     {
         return $this->createQueryBuilder('s')
-            ->select('s,e') // pour récuperer les stages et leur entreprise
+            ->select('s,e,f') // pour récuperer les stages et leur entreprise
             // si on le met pas ca aurai par default mi le s et on aurai donc eu les stages par entreprise 
             ->join('s.codeEntreprise', 'e')
+            ->join('s.codeFormation','f')
             ->where('e.nom = :nomEntreprise')
             ->setParameter('nomEntreprise', $nom)
             ->getQuery()
@@ -64,8 +65,8 @@ class StageRepository extends ServiceEntityRepository
     {
         $gestionnaireEntite = $this->getEntityManager();
         $requete = $gestionnaireEntite->createQuery(
-        'SELECT s,f 
-        From App\Entity\Stage s Join s.codeFormation f 
+        'SELECT s,f,e 
+        From App\Entity\Stage s Join s.codeFormation f Join s.codeEntreprise e
         WHERE f.nom= :nomFormation
         ');
         $requete->setParameter('nomFormation', $nom);
@@ -81,5 +82,19 @@ class StageRepository extends ServiceEntityRepository
 
         return $requete->execute();
 
+    }
+
+    public function trouverCaracteristiqueStage($id){
+
+        return $this->createQueryBuilder('s')
+            ->select('s,e,f') // pour récuperer les stages et leur entreprise
+            // si on le met pas ca aurai par default mi le s et on aurai donc eu les stages par entreprise 
+            ->join('s.codeEntreprise', 'e')
+            ->join('s.codeFormation','f')
+            ->where('s.id = :identifiant')
+            ->setParameter('identifiant', $id)
+            ->getQuery()
+            ->getSingleResult()
+            ;
     }
 }
