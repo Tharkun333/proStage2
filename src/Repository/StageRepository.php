@@ -71,4 +71,15 @@ class StageRepository extends ServiceEntityRepository
         $requete->setParameter('nomFormation', $nom);
         return $requete->execute();
     }
+
+    public function touverToutLesStages(){
+
+        $gestionnaireEntite = $this->getEntityManager();
+        $requete = $gestionnaireEntite->createQuery(
+        'SELECT s,e,f 
+        From App\Entity\Stage s Join s.codeEntreprise e Join s.codeFormation f');
+
+        return $requete->execute();
+
+    }
 }

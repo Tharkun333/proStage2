@@ -14,6 +14,16 @@ use App\Repository\StageRepository;
 use App\Repository\FormationRepository;
 use App\Repository\EntrepriseRepository;
 
+use Symfony\Component\HttpFoundation\Request;
+
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+
+use Doctrine\ORM\EntityManagerInterface;
+
+
 
 class ProStagesController extends AbstractController
 {
@@ -24,7 +34,7 @@ class ProStagesController extends AbstractController
     {
 
         //recuperer les stages de l'entité Stage
-        $ressources = $repositoryStage->findAll();
+        $ressources = $repositoryStage->touverToutLesStages();
     
         return $this->render('pro_stages/index.html.twig', ['stages'=>$ressources]);
     }
@@ -106,5 +116,46 @@ class ProStagesController extends AbstractController
 
            'stages'=>$StageDeLentreprise,
         ]);
+    }
+
+                /**
+     * @Route("/formulaire/", name="formulaireEntreprise")
+     */
+    public function formulaire(Request $requeteHttp,EntityManagerInterface $I): Response
+    {   
+    
+        //creation d'une entreprise vierge qui se remplie par le formulaire
+        $entreprise = new Entreprise();
+
+
+        //creation du formulaire 
+        $formulaireEntreprise=$this->createFormBuilder($entreprise)
+                                    ->add('nom',TextType::class)
+                                    ->add('adresse',TextType::class)
+                                    ->add('activite',TextareaType::class)
+                                    ->add('urlSite',UrlType::class)
+                                    ->add('Enregistrer',SubmitType::class)
+                                    ->getForm();
+
+        //Création de la représentation graphique
+        $formulaireEntreprise->handleRequest($requeteHttp);
+
+        if($formulaireEntreprise->isSubmitted()){
+            
+            $I->persist($entreprise);
+            $I->flush();
+            return $this->redirectToRoute('entreprise');
+
+        }
+
+
+    
+        return $this->render('pro_stages/formulaireEntreprise.html.twig', [
+            'formulaire'=>$formulaireEntreprise->createView()
+        
+        
+        ]);
+
+           
     }
 }
