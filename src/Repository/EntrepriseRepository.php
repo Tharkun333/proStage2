@@ -55,7 +55,7 @@ class EntrepriseRepository extends ServiceEntityRepository
 
         return $this->createQueryBuilder('e')
             ->select('e') 
-            ->where('s.id = :identifiant')
+            ->where('e.id = :identifiant')
             ->setParameter('identifiant', $id)
             ->getQuery()
             ->getSingleResult()

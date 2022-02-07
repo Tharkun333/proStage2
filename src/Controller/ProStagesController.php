@@ -128,6 +128,7 @@ class ProStagesController extends AbstractController
         //creation d'une entreprise vierge qui se remplie par le formulaire
         $entreprise = new Entreprise();
 
+       
 
         //creation du formulaire 
         $formulaireEntreprise=$this->createFormBuilder($entreprise)
@@ -173,9 +174,12 @@ class ProStagesController extends AbstractController
         //creation d'une entreprise vierge qui se remplie par le formulaire
         $entreprise = new Entreprise();
 
-       // $requete=$repositoryEntreprise->trouverCaracteristiqueEntreprise($id);
+        $requete=$repositoryEntreprise->trouverCaracteristiqueEntreprise($id);
 
-        //$entreprise = setNom("");
+        $entreprise->setNom($requete->getNom());
+        $entreprise->setAdresse($requete->getAdresse());
+        $entreprise->setActivite($requete->getActivite());
+        $entreprise->setUrlSite($requete->getUrlSite());
 
 
         //creation du formulaire 
@@ -192,7 +196,7 @@ class ProStagesController extends AbstractController
 
         if($formulaireEntreprise->isSubmitted()){
             
-            $I->persist($entreprise);
+            $I->persist($requete);
             $I->flush();
             return $this->redirectToRoute('entreprise');
 
