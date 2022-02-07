@@ -159,4 +159,53 @@ class ProStagesController extends AbstractController
 
            
     }
+
+
+    
+                /**
+     * @Route("/formulaireModification/{id}", name="formulaireEntrepriseModification")
+     */
+
+
+    public function formulaireModification(EntrepriseRepository $repositoryEntreprise,Request $requeteHttp,EntityManagerInterface $I,$id): Response
+    {   
+    
+        //creation d'une entreprise vierge qui se remplie par le formulaire
+        $entreprise = new Entreprise();
+
+       // $requete=$repositoryEntreprise->trouverCaracteristiqueEntreprise($id);
+
+        //$entreprise = setNom("");
+
+
+        //creation du formulaire 
+        $formulaireEntreprise=$this->createFormBuilder($entreprise)
+                                    ->add('nom',TextType::class)
+                                    ->add('adresse',TextType::class)
+                                    ->add('activite',TextareaType::class)
+                                    ->add('urlSite',UrlType::class)
+                                    ->add('Enregistrer',SubmitType::class)
+                                    ->getForm();
+
+        //Création de la représentation graphique
+        $formulaireEntreprise->handleRequest($requeteHttp);
+
+        if($formulaireEntreprise->isSubmitted()){
+            
+            $I->persist($entreprise);
+            $I->flush();
+            return $this->redirectToRoute('entreprise');
+
+        }
+
+
+    
+        return $this->render('pro_stages/formulaireEntreprise.html.twig', [
+            'formulaire'=>$formulaireEntreprise->createView()
+        
+        
+        ]);
+
+           
+    }
 }

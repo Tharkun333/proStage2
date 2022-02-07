@@ -47,4 +47,18 @@ class EntrepriseRepository extends ServiceEntityRepository
         ;
     }
     */
+
+
+
+
+    public function trouverCaracteristiqueEntreprise($id){
+
+        return $this->createQueryBuilder('e')
+            ->select('e') 
+            ->where('s.id = :identifiant')
+            ->setParameter('identifiant', $id)
+            ->getQuery()
+            ->getSingleResult()
+            ;
+    }
 }
