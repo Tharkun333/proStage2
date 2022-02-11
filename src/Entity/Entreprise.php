@@ -7,6 +7,8 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=EntrepriseRepository::class)
  */
@@ -21,6 +23,8 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(min=4,minMessage=" Doit faire plus de 4 caractères")
+     * 
      */
     private $nom;
 
@@ -31,11 +35,13 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $activite;
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\Url
      */
     private $urlSite;
 

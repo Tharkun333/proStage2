@@ -7,6 +7,7 @@
         <th scope="col">Entreprise</th>
         <th scope="col">Nom</th>
         <th scope="col">URL</th>
+        <th scope="col">Modifier</th>
         <th scope="col">Stages proposés</th>
         </tr>
     </thead>
@@ -16,6 +17,7 @@
                 <th scope="row">{{entreprise.id}}</th>
                 <td>{{entreprise.nom}}</td>
                 <td>{{entreprise.urlSite}}</td>
+                <td><a class="nav-link" href="{{path('formulaireEntrepriseModification',{id:entreprise.id})}}"><h5>+</h5></a></td>
                 <td><a class="stage" href="{{path('entrepriseStages',{nom:entreprise.nom})}}">Voir</a></td>
             </tr>
         </tbody>

@@ -142,7 +142,7 @@ class ProStagesController extends AbstractController
         //Création de la représentation graphique
         $formulaireEntreprise->handleRequest($requeteHttp);
 
-        if($formulaireEntreprise->isSubmitted()){
+        if($formulaireEntreprise->isSubmitted()&&$formulaireEntreprise->isValid()){
             
             $I->persist($entreprise);
             $I->flush();
@@ -153,7 +153,8 @@ class ProStagesController extends AbstractController
 
     
         return $this->render('pro_stages/formulaireEntreprise.html.twig', [
-            'formulaire'=>$formulaireEntreprise->createView()
+            'formulaire'=>$formulaireEntreprise->createView(),
+            'action'=>"ajouter"
         
         
         ]);
@@ -172,18 +173,19 @@ class ProStagesController extends AbstractController
     {   
     
         //creation d'une entreprise vierge qui se remplie par le formulaire
-        $entreprise = new Entreprise();
-
+        
+        //recupère l'entreprise
         $requete=$repositoryEntreprise->trouverCaracteristiqueEntreprise($id);
 
-        $entreprise->setNom($requete->getNom());
-        $entreprise->setAdresse($requete->getAdresse());
-        $entreprise->setActivite($requete->getActivite());
-        $entreprise->setUrlSite($requete->getUrlSite());
+
+        // $entreprise->setNom($requete->getNom());
+        // $entreprise->setAdresse($requete->getAdresse());
+        // $entreprise->setActivite($requete->getActivite());
+        // $entreprise->setUrlSite($requete->getUrlSite());
 
 
         //creation du formulaire 
-        $formulaireEntreprise=$this->createFormBuilder($entreprise)
+        $formulaireEntreprise=$this->createFormBuilder($requete)
                                     ->add('nom',TextType::class)
                                     ->add('adresse',TextType::class)
                                     ->add('activite',TextareaType::class)
@@ -194,7 +196,7 @@ class ProStagesController extends AbstractController
         //Création de la représentation graphique
         $formulaireEntreprise->handleRequest($requeteHttp);
 
-        if($formulaireEntreprise->isSubmitted()){
+        if($formulaireEntreprise->isSubmitted()&&$formulaireEntreprise->isValid()){
             
             $I->persist($requete);
             $I->flush();
@@ -205,7 +207,8 @@ class ProStagesController extends AbstractController
 
     
         return $this->render('pro_stages/formulaireEntreprise.html.twig', [
-            'formulaire'=>$formulaireEntreprise->createView()
+            'formulaire'=>$formulaireEntreprise->createView(),
+            'action'=>"modifier"
         
         
         ]);
