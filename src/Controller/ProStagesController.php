@@ -23,6 +23,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 
 use Doctrine\ORM\EntityManagerInterface;
 
+use App\Form\EntrepriseType;
+use App\Form\StageType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 
 class ProStagesController extends AbstractController
@@ -124,12 +128,12 @@ class ProStagesController extends AbstractController
      */
     public function formulaire(Request $requeteHttp,EntityManagerInterface $I): Response
     {   
-    
+        
         //creation d'une entreprise vierge qui se remplie par le formulaire
         $entreprise = new Entreprise();
 
-       
-
+        $formulaireEntreprise= $this->createForm(EntrepriseType::class, $entreprise);
+        /*Avant externalisation
         //creation du formulaire 
         $formulaireEntreprise=$this->createFormBuilder($entreprise)
                                     ->add('nom',TextType::class)
@@ -140,8 +144,9 @@ class ProStagesController extends AbstractController
                                     ->getForm();
 
         //Création de la représentation graphique
+        */
         $formulaireEntreprise->handleRequest($requeteHttp);
-
+        
         if($formulaireEntreprise->isSubmitted()&&$formulaireEntreprise->isValid()){
             
             $I->persist($entreprise);
@@ -158,6 +163,7 @@ class ProStagesController extends AbstractController
         
         
         ]);
+
 
            
     }
@@ -177,7 +183,7 @@ class ProStagesController extends AbstractController
         //recupère l'entreprise
         $requete=$repositoryEntreprise->trouverCaracteristiqueEntreprise($id);
 
-
+        /*
         // $entreprise->setNom($requete->getNom());
         // $entreprise->setAdresse($requete->getAdresse());
         // $entreprise->setActivite($requete->getActivite());
@@ -192,8 +198,10 @@ class ProStagesController extends AbstractController
                                     ->add('urlSite',UrlType::class)
                                     ->add('Enregistrer',SubmitType::class)
                                     ->getForm();
-
+        */
         //Création de la représentation graphique
+
+        $formulaireEntreprise= $this->createForm(EntrepriseType::class, $requete);
         $formulaireEntreprise->handleRequest($requeteHttp);
 
         if($formulaireEntreprise->isSubmitted()&&$formulaireEntreprise->isValid()){
@@ -214,5 +222,51 @@ class ProStagesController extends AbstractController
         ]);
 
            
+    }
+
+                /**
+     * @Route("/formulaireStage/", name="formulaireStage")
+     */
+    public function formulaireStage(Request $requeteHttp,EntityManagerInterface $I): Response
+    {   
+        
+        //creation d'une entreprise vierge qui se remplie par le formulaire
+        $stage = new Stage();
+
+        $formulaireStage= $this->createForm(StageType::class, $stage);
+        /*Avant externalisation
+        //creation du formulaire 
+        $formulaireEntreprise=$this->createFormBuilder($entreprise)
+                                    ->add('nom',TextType::class)
+                                    ->add('adresse',TextType::class)
+                                    ->add('activite',TextareaType::class)
+                                    ->add('urlSite',UrlType::class)
+                                    ->add('Enregistrer',SubmitType::class)
+                                    ->getForm();
+
+        //Création de la représentation graphique
+        */
+        $formulaireStage->handleRequest($requeteHttp);
+        
+        if($formulaireStage->isSubmitted()&&$formulaireStage->isValid()){
+            
+            
+            $I->persist($stage);
+
+           
+            $I->persist($stage->getcodeEntreprise());
+            $I->flush();
+            return $this->redirectToRoute('pro_stages_Accueil');
+
+        }
+
+
+    
+        return $this->render('pro_stages/formulaireStage.html.twig', [
+            'formulaire'=>$formulaireStage->createView(),
+            'action'=>"ajouter"
+        
+        
+        ]);
     }
 }
