@@ -19,18 +19,22 @@ Modification : Saisisser les caractéristique de l'entreprise
         <div class="col-md-8">
             {{form_start(formulaire,{'attr':{"novalidate":"novalidate"}})}}
 
+            <dt><br>
             {{form_row(formulaire.nom)}}
-
+            </dt>
+            <dt><br>
             {{form_row(formulaire.adresse)}}
-
+            </dt>
+            <dt><br>
             {{form_row(formulaire.activite)}}
-
+            </dt>
+            <dt><br>
             {{form_row(formulaire.urlSite)}}
-
+            </dt>
             
            
             <center>
-            <input type="submit" class="btn btn-succes" value="Enregistrer"/><br>
+            <input type="submit" class="btn btn-dark" value="Enregistrer"/><br>
             </center>
              {{form_end(formulaire)}}
             

@@ -17,20 +17,37 @@ Modification : Saisisser les caractéristique de l'entreprise
     <div class="col-md-2">
     </div>
         <div class="col-md-8">
-            {{form_start(formulaire,{'attr':{"novalidate":"novalidate"}})}}
+            {{form_start(formulaire)}}
 
-
+            <dt><br>
             {{form_row(formulaire.titre)}}
-
+            </dt>
+            <dt><br>
             {{form_row(formulaire.missions)}}
-
+            </dt>
+            <dt><br>
             {{form_row(formulaire.contact)}}
-
-            {{form_row(formulaire.codeEntreprise)}}
-
+            </dt>
+            <dt><br>
+            <center>Information sur l'entreprise proposant le stage</center>
+            <br>
+            {{form_row(formulaire.codeEntreprise.nom)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.codeEntreprise.adresse)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.codeEntreprise.activite)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.codeEntreprise.urlSite)}}
+            </dt>
+            <dt><br>
             {{form_row(formulaire.codeFormation)}}
+            </dt>
+
             <center>
-            <input type="submit" class="btn btn-succes" value="Enregistrer"/><br>
+            <input type="submit" class="btn btn-dark" value="Enregistrer"/><br>
             </center>
              {{form_end(formulaire)}}
 

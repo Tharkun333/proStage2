@@ -5,8 +5,7 @@
     <thead>
         <tr>
         <th scope="col">Stage</th>
-        <th scope="col">Titre</th>
-        <th scope="col">Entreprise</th>
+        <th scope="col">Titre / Entreprise</th>
         <th scope="col">Formations Acceptées</th>
         <th scope="col">Plus d'informations</th>
         </tr>
@@ -15,8 +14,8 @@
         <tbody>
             <tr>
                 <th scope="row">{{stage.id}}</th>
-                <td>{{stage.titre}}</td>
-                <td>{{stage.codeEntreprise.nom}}</td>
+                <td>{{stage.titre}} / {{stage.codeEntreprise.nom}}</td>
+                
                 <td>/{% for formation in stage.codeFormation %}
                 {{formation.nomCourt}}/
                 {% endfor %}            

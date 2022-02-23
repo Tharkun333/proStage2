@@ -20,10 +20,10 @@ class EntrepriseType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('nom',TextType::class)
-        ->add('adresse',TextType::class)
-        ->add('activite',TextareaType::class)
-        ->add('urlSite',UrlType::class)
+        ->add('nom',TextType::class,['label'=>'Nom de l\'entreprise'])
+        ->add('adresse',TextType::class,['label'=>'Adresse'])
+        ->add('activite',TextareaType::class,['label'=>'Son activité'])
+        ->add('urlSite',UrlType::class,['label'=>'URL du site'])
         //->add('Enregistrer',SubmitType::class)
         ;
     }
