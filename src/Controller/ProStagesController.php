@@ -124,7 +124,7 @@ class ProStagesController extends AbstractController
     }
 
                 /**
-     * @Route("/formulaire/", name="formulaireEntreprise")
+     * @Route("/admin/formulaire/", name="formulaireEntreprise")
      */
     public function formulaire(Request $requeteHttp,EntityManagerInterface $I): Response
     {   
@@ -171,7 +171,7 @@ class ProStagesController extends AbstractController
 
     
                 /**
-     * @Route("/formulaireModification/{id}", name="formulaireEntrepriseModification")
+     * @Route("/admin/formulaireModification/{id}", name="formulaireEntrepriseModification")
      */
 
 
@@ -225,7 +225,7 @@ class ProStagesController extends AbstractController
     }
 
                 /**
-     * @Route("/formulaireStage/", name="formulaireStage")
+     * @Route("/user/formulaireStage/", name="formulaireStage")
      */
     public function formulaireStage(Request $requeteHttp,EntityManagerInterface $I): Response
     {   
@@ -248,7 +248,7 @@ class ProStagesController extends AbstractController
         */
         $formulaireStage->handleRequest($requeteHttp);
         
-        if($formulaireStage->isSubmitted()&&$formulaireStage->isValid()){
+        if($formulaireStage->isSubmitted() && $formulaireStage->isValid()){
             
             
             $I->persist($stage);

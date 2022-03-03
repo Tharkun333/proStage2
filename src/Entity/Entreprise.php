@@ -33,6 +33,7 @@ class Entreprise
      * @Assert\Regex(pattern="#^([1-9][0-9]?[0-9]? ?(bis)? )#i",message="Le numéro de rue semble incorrect (ca marche pas)")
      * @Assert\Regex(pattern="# (rue|avenue|boulevard|impasse|allée|place|route) #i",message="Le type de route/voie semble incorrect")
      * @Assert\Regex(pattern="# [0-9]{5} #i",message="Il semble y avoir un problème avec le code postal")
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      */
     private $adresse;
 
@@ -44,6 +45,7 @@ class Entreprise
 
     /**
      * @ORM\Column(type="string", length=150)
+     * @Assert\NotBlank(message="Ce champ ne doit pas être vide")
      * @Assert\Url
      */
     private $urlSite;
