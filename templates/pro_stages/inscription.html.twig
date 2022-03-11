@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+{% block Contenu %}
+
+
+<div class="row-fluid-formulaire">
+</br><strong>
+
+Saisisser vos informations
+
+
+</strong></br>
+</div>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+        <div class="col-md-8">
+            {{form_start(formulaire)}}
+
+            <dt><br>
+            {{form_row(formulaire.nom)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.prenom)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.email)}}
+            </dt>
+            <dt><br>
+            {{form_row(formulaire.password)}}
+            </dt>
+            
+           
+            <center>
+            <input type="submit" class="btn btn-dark" value="Enregistrer"/><br>
+            </center>
+             {{form_end(formulaire)}}
+            
+
+        <div>
+    <div class="col-md-2">
+    </div>
+</div></br>
+<div class="row-fluid-formulaire">
+
+</br></br>
+</div>
+{% endblock %}
