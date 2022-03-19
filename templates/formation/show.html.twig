@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block Contenu %}
+
+<br></br>
+<div class="row">
+    <div class="col-md-2">
+    </div>
+        <div class="col-md-8">
+            <h1>La formation</h1>
+
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ formation.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Nom</th>
+                        <td>{{ formation.nom }}</td>
+                    </tr>
+                    <tr>
+                        <th>NomCourt</th>
+                        <td>{{ formation.nomCourt }}</td>
+                    </tr>
+                </tbody>
+            </table>
+
+        <div>
+    <div class="col-md-2">
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+        <center> 
+            <a type="button" class="btn btn-primary" href="{{ path('formations') }}"> Formations</a>
+            <a type="button" class="btn btn-primary" href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a>
+            <br></br>
+            {{ include('formation/_delete_form.html.twig') }} 
+        </center> 
+    </div>
+    <div class="col-md-4">
+    </div>
+</div>
+{% endblock %}

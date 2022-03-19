@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block Contenu %}
+
+
+<div class="row-fluid-formulaire">
+</br><strong>
+Créer une nouvelle formation
+</strong></br>
+</div>
+
+
+
+
+   
+
+    
+
+
+
+<div class="row">
+    <div class="col-md-2">
+    </div>
+        <div class="col-md-8">
+            {{ include('formation/_form.html.twig') }}
+           
+            <center>
+                <a href="{{ path('formations') }}">Annuler</a>
+            </center>
+             
+            
+
+        <div>
+    <div class="col-md-2">
+    </div>
+</div></br>
+<div class="row-fluid-formulaire">
+
+</br></br>
+</div>
+{% endblock %}

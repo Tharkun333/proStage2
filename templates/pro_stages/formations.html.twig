@@ -8,6 +8,10 @@
         <th scope="col">Abréviation</th>
         <th scope="col">Nom Complet</th>
         <th scope="col">Stages en rapport</th>
+        {% if is_granted ('ROLE_ADMIN') %}
+            
+        {% endif %}
+
         </tr>
     </thead>
     {% for formation in formations %}
@@ -17,6 +21,12 @@
                 <td>{{formation.nomCourt}}</td>
                 <td>{{formation.nom}}</td>
                 <td><a class="stage" href="{{path('formationStages',{nom:formation.nom})}}">Voir</a></td>
+                
+                {% if is_granted ('ROLE_ADMIN') %}
+                    <td><a href="{{ path('formation_show', {'id': formation.id}) }}">Voir en détail</a>
+                    <a href="{{ path('formation_edit', {'id': formation.id}) }}">Modifier</a></td>
+                {% endif %}
+                
             </tr>
         </tbody>
     {% endfor %}

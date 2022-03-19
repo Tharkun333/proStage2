@@ -68,14 +68,15 @@
                             
                             <a class="flex-sm-fill text-sm-center nav-link" href="{{path('formations')}}"> Formations</a>
                             
-                            {% if is_granted ('ROLE_USER') %}
-                        
-                            <a class="flex-sm-fill text-sm-center nav-link list-group-action disabled" href="{{path('formulaireEntreprise')}}">Ajouter une Entreprise</a>
+                            {% if is_granted ('ROLE_ADMIN') %}
+                            <a class="flex-sm-fill text-sm-center nav-link" href="{{path('formulaireEntreprise')}}">Ajouter une Entreprise</a> 
+                            
                             {% else %}
-                            <a class="flex-sm-fill text-sm-center nav-link" href="{{path('formulaireEntreprise')}}">Ajouter une Entreprise</a>   
+                            <a class="flex-sm-fill text-sm-center nav-link list-group-action disabled" href="{{path('formulaireEntreprise')}}">Ajouter une Entreprise</a>
+                              
                             {% endif %}
                             
-
+                            <a class="flex-sm-fill text-sm-center nav-link" href="{{ path('formation_new') }}">Ajouter formation</a>
                             <a class="flex-sm-fill text-sm-center nav-link" href="{{path('formulaireStage')}}">Ajouter un Stage</a>               
                         </nav>
                     </div>
@@ -83,6 +84,7 @@
             </div>
         </div>
         
+
          {% block Contenu %}{% endblock %}
         {% block PiedPage %}{% endblock %}
 
