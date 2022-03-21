@@ -7,7 +7,10 @@
         <th scope="col">Entreprise</th>
         <th scope="col">Nom</th>
         <th scope="col">URL</th>
-        <th scope="col">Modifier</th>
+        {% if is_granted ('ROLE_ADMIN') %}
+            <th scope="col">Modifier</th>
+        {% endif %}
+        
         <th scope="col">Stages proposés</th>
         </tr>
     </thead>
@@ -17,7 +20,10 @@
                 <th scope="row">{{entreprise.id}}</th>
                 <td>{{entreprise.nom}}</td>
                 <td>{{entreprise.urlSite}}</td>
+                {% if is_granted ('ROLE_ADMIN') %}
                 <td><a class="nav-link" href="{{path('formulaireEntrepriseModification',{id:entreprise.id})}}"><h5>+</h5></a></td>
+                {% endif %}
+                
                 <td><a class="stage" href="{{path('entrepriseStages',{nom:entreprise.nom})}}">Voir</a></td>
             </tr>
         </tbody>
