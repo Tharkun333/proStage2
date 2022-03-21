@@ -100,4 +100,5 @@ class Formation
     {
         return $this->getNom();
     }
+
 }
